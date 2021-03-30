@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:isolate_executor/isolate_executor.dart';
+import 'package:isolate_executor_2/isolate_executor_2.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:isolate_executor/src/executable.dart';
-import 'package:isolate_executor/src/source_generator.dart';
+import 'package:isolate_executor_2/src/executable.dart';
+import 'package:isolate_executor_2/src/source_generator.dart';
 
 class IsolateExecutor<U> {
   IsolateExecutor(this.generator, {this.packageConfigURI, Map<String, dynamic> message}) : this.message = message ?? {};
