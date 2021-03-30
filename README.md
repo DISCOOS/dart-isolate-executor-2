@@ -5,6 +5,8 @@ is a fork maintained by [DISCO Open Source](https://discoos.org).
 
 # isolate_executor_2
 
+[![Build Status](https://www.travis-ci.com/DISCOOS/dart-isolate-executor-2.svg?branch=master)](https://www.travis-ci.com/DISCOOS/dart-isolate-executor-2)
+
 This library contains types that allow for executing code in a spawned isolate, perhaps with additional imports.
 
 Subclass `Executable` and override its `execute` method. Invoke `IsolateExecutor.executeWithType`, passing in that subclass.
