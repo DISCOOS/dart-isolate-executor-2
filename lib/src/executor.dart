@@ -80,7 +80,12 @@ class IsolateExecutor<U> {
       void eventHandler(dynamic event),
       void logHandler(String line),
       List<Type> additionalTypes}) async {
-    final source = new SourceGenerator(executable.runtimeType, imports: imports, additionalContents: additionalContents, additionalTypes: additionalTypes);
+    final source = new SourceGenerator(
+      executable.runtimeType,
+      imports: imports,
+      additionalTypes: additionalTypes,
+      additionalContents: additionalContents,
+    );
     var executor = new IsolateExecutor<T>(source, packageConfigURI: packageConfigURI, message: executable.message);
 
     if (eventHandler != null) {

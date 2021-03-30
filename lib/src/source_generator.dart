@@ -3,8 +3,11 @@ import 'dart:isolate';
 import 'dart:mirrors';
 import 'dart:async';
 
-import 'package:analyzer/analyzer.dart';
+import 'package:analyzer/dart/analysis/features.dart';
+import 'package:analyzer/dart/analysis/utilities.dart';
+import 'package:analyzer/dart/ast/ast.dart';
 import 'package:isolate_executor/src/executable.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 class SourceGenerator {
   SourceGenerator(this.executableType, {this.imports, this.additionalContents, this.additionalTypes});
@@ -20,6 +23,7 @@ class SourceGenerator {
     final typeSource = (await _getClass(executableType)).toSource();
     var builder = new StringBuffer();
 
+    builder.writeln("// @dart=2.0");
     builder.writeln("import 'dart:async';");
     builder.writeln("import 'dart:isolate';");
     builder.writeln("import 'dart:mirrors';");
@@ -51,10 +55,17 @@ Future main (List<String> args, Map<String, dynamic> message) async {
 
   static Future<ClassDeclaration> _getClass(Type type) async {
     final uri = await Isolate.resolvePackageUri(reflectClass(type).location.sourceUri);
-    final fileUnit = parseDartFile(uri.toFilePath(windows: Platform.isWindows));
+    final limit = Version.parse('2.11.0');
+    final fileUnit = parseFile(
+      path: uri.toFilePath(windows: Platform.isWindows),
+      featureSet: FeatureSet.fromEnableFlags2(
+        sdkLanguageVersion: limit,
+        flags: [],
+      ),
+    );
     final typeName = MirrorSystem.getName(reflectClass(type).simpleName);
 
-    return fileUnit.declarations
+    return fileUnit.unit.declarations
         .where((u) => u is ClassDeclaration)
         .map((cu) => cu as ClassDeclaration)
         .firstWhere((classDecl) => classDecl.name.name == typeName);
