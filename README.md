@@ -3,6 +3,8 @@
 along with other packages which aqueduct depends on. This [package](https://github.com/DISCOOS/dart-isolate-executor-2) 
 is a fork maintained by [DISCO Open Source](https://discoos.org).
 
+***
+
 # isolate_executor_2
 
 [![Build Status](https://www.travis-ci.com/DISCOOS/dart-isolate-executor-2.svg?branch=master)](https://www.travis-ci.com/DISCOOS/dart-isolate-executor-2)
