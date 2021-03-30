@@ -9,7 +9,7 @@ managed by [DISCO Open Source](https://www.discoos.org)
 
 Prior versions (deprecated) 
 ===========================
-Deprecated versions of [isolate_execute](https://pub.dev/packages/isolate_executor_2)
+Deprecated versions of [isolate_execute](https://pub.dev/packages/isolate_executor)
 
 ## 2.0.1
 
