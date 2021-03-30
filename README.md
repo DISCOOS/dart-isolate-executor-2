@@ -1,3 +1,8 @@
+[StableKernel](https://stablekernel.com/) has
+[discontinued Aqueduct](https://stablekernel.com/article/announcing-the-sunsetting-of-aqueduct-our-open-source-server-side-framework-in-googles-dart/), 
+along other packages which aqueduct depends on. This [package](https://github.com/DISCOOS/dart-isolate-executor-2) 
+is a fork maintained by [DISCO Open Source](https://discoos.org).
+
 # isolate_executor
 
 This library contains types that allow for executing code in a spawned isolate, perhaps with additional imports.
