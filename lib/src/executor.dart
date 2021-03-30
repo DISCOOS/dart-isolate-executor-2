@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:isolate_executor/src/executable.dart';
-import 'package:isolate_executor/src/source_generator.dart';
+import 'package:isolate_executor_2/src/executable.dart';
+import 'package:isolate_executor_2/src/source_generator.dart';
 
 class IsolateExecutor<U> {
   IsolateExecutor(this.generator, {this.packageConfigURI, Map<String, dynamic> message}) : this.message = message ?? {};
@@ -80,7 +80,12 @@ class IsolateExecutor<U> {
       void eventHandler(dynamic event),
       void logHandler(String line),
       List<Type> additionalTypes}) async {
-    final source = new SourceGenerator(executable.runtimeType, imports: imports, additionalContents: additionalContents, additionalTypes: additionalTypes);
+    final source = new SourceGenerator(
+      executable.runtimeType,
+      imports: imports,
+      additionalTypes: additionalTypes,
+      additionalContents: additionalContents,
+    );
     var executor = new IsolateExecutor<T>(source, packageConfigURI: packageConfigURI, message: executable.message);
 
     if (eventHandler != null) {

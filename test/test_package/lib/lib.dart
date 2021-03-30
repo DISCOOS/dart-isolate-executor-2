@@ -1,3 +1,4 @@
+// @dart=2.0
 import 'package:test_package/src/src.dart';
 export 'package:test_package/src/src.dart';
 

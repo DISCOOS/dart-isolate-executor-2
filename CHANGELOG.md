@@ -1,4 +1,15 @@
 # Changelog
+[Fork](https://github.com/DISCOOS/dart-isolate-executor-2)
+managed by [DISCO Open Source](https://www.discoos.org)
+
+## 1.0.0
+
+- Changed library name to isolate_executor_2_2 (breaking change)
+- Upgraded dependencies to latest non-null safe versions
+
+Prior versions (deprecated) 
+===========================
+Deprecated versions of [isolate_execute](https://pub.dev/packages/isolate_executor_2)
 
 ## 2.0.1
 

@@ -10,10 +10,14 @@ abstract class Executable<T> {
   final Map<String, dynamic> message;
   final SendPort _sendPort;
 
-  U instanceOf<U>(String typeName,
-      {List positionalArguments: const [], Map<Symbol, dynamic> namedArguments, Symbol constructorName}) {
-    ClassMirror typeMirror = currentMirrorSystem().isolate.rootLibrary.declarations[new Symbol(typeName)];
-    if (typeMirror == null) {
+  U instanceOf<U>(
+    String typeName, {
+    List positionalArguments: const [],
+    Symbol constructorName = const Symbol(""),
+    Map<Symbol, dynamic> namedArguments = const <Symbol, dynamic>{},
+  }) {
+    var typeMirror = currentMirrorSystem().isolate.rootLibrary.declarations[new Symbol(typeName)];
+    if (typeMirror is! ClassMirror) {
       typeMirror = currentMirrorSystem()
           .libraries
           .values
@@ -23,8 +27,13 @@ abstract class Executable<T> {
               orElse: () => throw new ArgumentError("Unknown type '$typeName'. Did you forget to import it?"));
     }
 
-    return typeMirror.newInstance(constructorName ?? const Symbol(""), positionalArguments, namedArguments).reflectee
-        as U;
+    return (typeMirror as ClassMirror)
+        .newInstance(
+          constructorName,
+          positionalArguments,
+          namedArguments,
+        )
+        .reflectee as U;
   }
 
   void send(dynamic message) {
