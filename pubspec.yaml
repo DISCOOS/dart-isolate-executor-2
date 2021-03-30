@@ -1,8 +1,8 @@
 name: isolate_executor_2
 description: This library contains types that allow for executing code in a spawned isolate, perhaps with additional imports.
 version: 1.0.0
-homepage: https://github.com/stablekernel/dart-isolate-executor-2
-author: stable|kernel <jobs@stablekernel.com>
+homepage: https://github.com/DISCOOS/dart-isolate-executor-2
+author: DISCO Open Source <support@discoos.org>
 
 environment:
   sdk: ">=2.0.0 <3.0.0"
