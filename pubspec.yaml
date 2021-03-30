@@ -7,6 +7,9 @@ author: stable|kernel <jobs@stablekernel.com>
 environment:
   sdk: ">=2.0.0 <3.0.0"
 
+# Change when IPR is resolved with Stable/Kernel
+publish_to: none
+
 dependencies:
   analyzer: ^0.41.1
   pub_semver: ^2.0.0
